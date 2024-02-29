@@ -25,7 +25,7 @@ def get_posts(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Post).offset(skip).limit(limit).all()
 
 
-def create_user_posts(db: Session, post: schemas.PostCreate, user_id: int):
+def create_user_post(db: Session, post: schemas.PostCreate, user_id: int):
     db_item = models.Post(**post.dict(), user_id=user_id)
     db.add(db_item)
     db.commit()

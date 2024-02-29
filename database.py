@@ -1,11 +1,13 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+import os
+from dotenv import load_dotenv
 
-DATABASE_URL = "postgresql://xdman:1234@localhost:5432/blog"
+load_dotenv()
 
 # Step 1: Create Database engine
-engine = create_engine(DATABASE_URL)
+engine = create_engine(os.getenv("DATABASE_URL"))
 
 # configures the session to be used for database operations
 # autocommit & autoflush = False - More Control Over Transaction
